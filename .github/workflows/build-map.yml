@@ -1,0 +1,59 @@
+# Vyrobí novou mapu pro Orienťák a přidá ji do catalog.json.
+# Spuštění: GitHub → Actions → „Vyrobit mapu" → Run workflow a vyplnit údaje
+# (bbox a id pošle hra v „Chci novou mapu").
+name: Vyrobit mapu
+
+on:
+  workflow_dispatch:
+    inputs:
+      id:
+        description: 'id mapy (malá písmena a pomlčky, např. prokopske-udoli)'
+        required: true
+      name:
+        description: 'Název mapy'
+        required: true
+      bbox:
+        description: 'lat1,lon1,lat2,lon2 (jih, západ, sever, východ)'
+        required: true
+      place:
+        description: 'Místo (např. Praha 5)'
+        required: false
+        default: ''
+      description:
+        description: 'Krátký popis'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency: build-map
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Vyrobit mapu
+        run: npm run build-map -- --id "$ID" --name "$NAME" --bbox "$BBOX" --place "$PLACE" --description "$DESC"
+        env:
+          ID: ${{ inputs.id }}
+          NAME: ${{ inputs.name }}
+          BBOX: ${{ inputs.bbox }}
+          PLACE: ${{ inputs.place }}
+          DESC: ${{ inputs.description }}
+      - name: Uložit do repozitáře
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add maps catalog.json
+          git commit -m "Nová mapa: $NAME"
+          git push
+        env:
+          NAME: ${{ inputs.name }}

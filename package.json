@@ -1,0 +1,17 @@
+{
+  "name": "orientakhra-maps",
+  "private": true,
+  "type": "module",
+  "description": "Mapy pro hru Orienťák (obapp.safka.eu) vyrobené z lidaru ČÚZK a OpenStreetMap",
+  "scripts": {
+    "build-map": "node --max-old-space-size=8000 pipeline/build-map.mjs"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "^0.1.80",
+    "d3-contour": "^4.0.2",
+    "delaunator": "^5.0.1",
+    "fflate": "^0.8.2",
+    "laz-perf": "^0.0.7",
+    "proj4": "^2.19.10"
+  }
+}

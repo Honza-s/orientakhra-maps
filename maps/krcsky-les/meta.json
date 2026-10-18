@@ -1,0 +1,44 @@
+{
+ "id": "krcsky-les",
+ "name": "Hrádek – Krčský les",
+ "version": 1,
+ "created": "2026-10-18",
+ "bbox": [
+  50.013,
+  14.451,
+  50.04,
+  14.493
+ ],
+ "utmZone": 33,
+ "origin": [
+  460660,
+  5540190
+ ],
+ "width": 3040,
+ "height": 3040,
+ "hmin": 210,
+ "hmax": 317.4,
+ "terrain": {
+  "file": "terrain.png",
+  "res": 2
+ },
+ "cover": {
+  "file": "cover.png",
+  "res": 1
+ },
+ "map": {
+  "file": "map.webp",
+  "pxPerM": 1.25,
+  "scale": 10000,
+  "contour": 5
+ },
+ "ground": {
+  "file": "ground.webp",
+  "res": 1
+ },
+ "features": "features.json",
+ "sources": [
+  "© ČÚZK – DMR 5G, DMP 1G (otevřená data)",
+  "© přispěvatelé OpenStreetMap (ODbL)"
+ ]
+}

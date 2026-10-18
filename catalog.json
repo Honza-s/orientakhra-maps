@@ -1,0 +1,12 @@
+{
+  "maps": [
+    {
+      "id": "krcsky-les",
+      "name": "Hrádek – Krčský les",
+      "place": "Praha 4",
+      "sizeMB": 7.5,
+      "version": 1,
+      "description": "Krčský les mezi Thomayerovou nemocnicí a Kunraticemi. Vyrobeno z lidaru ČÚZK a OpenStreetMap."
+    }
+  ]
+}
